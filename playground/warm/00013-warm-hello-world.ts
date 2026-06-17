@@ -28,7 +28,9 @@
 
 /* _____________ Your Code Here _____________ */
 
-type HelloWorld = any // expected to be a string
+type HelloWorld = string; // expected to be a string
+type HelloWorld2 = 'string'; 
+type HelloWorld3 = number;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect, NotAny } from '@type-challenges/utils'
@@ -36,6 +38,8 @@ import type { Equal, Expect, NotAny } from '@type-challenges/utils'
 type cases = [
   Expect<NotAny<HelloWorld>>,
   Expect<Equal<HelloWorld, string>>,
+  Expect<Equal<HelloWorld2, 'string'>>,
+  Expect<Equal<HelloWorld3, number>>,
 ]
 
 /* _____________ Further Steps _____________ */

@@ -22,7 +22,9 @@
 
 /* _____________ Your Code Here _____________ */
 
-type First<T extends any[]> = any
+type First<T extends unknown[]> = T['length'] extends 0 ? never : T[0]; // ⚠️ any[] ではなく unknown[] を利用する
+
+// https://github.com/type-challenges/type-challenges/issues/16315
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

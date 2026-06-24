@@ -20,7 +20,10 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyParameters<T extends (...args: any[]) => any> = any;
+// NOTE: argsにはneverを利用することで、反変で [string, number]を引数とした際に unknown[] は代入できない。neverの反変を利用する
+type MyParameters<T extends (...args: never[]) => unknown> = T extends (...args: infer S) => unknown
+  ? S
+  : unknown;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";

@@ -22,7 +22,22 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyAwaited<T> = any;
+/*
+NOTE
+簡潔に言うと：
+
+  - Promise → then と catch の両方を持つ（JavaScript の Promise そのもの）
+  - PromiseLike → then だけを持つ（より広いインターフェース）
+
+  PromiseLike は「thenable」を表現するための型で、then メソッドさえあればマッチします。line 34 のテストケース T がまさにそれで、catch は無いが then を持つオブジェクトです。
+
+  制約に Promise ではなく PromiseLike を使うことで、この T のようなthenable も受け入れられるようになっています。
+*/
+// 再帰的に
+type MyAwaited<T extends PromiseLike<unknown>> =
+  T extends PromiseLike<infer P> ? (P extends PromiseLike<unknown> ? MyAwaited<P> : P) : never;
+
+  // NOTE: PromiseLike<unknown> だとargを満たせないパターンがある（line56）
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";

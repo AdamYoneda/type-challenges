@@ -41,6 +41,7 @@ type cases = [
   Expect<Equal<Expected2, MyPick<Todo, 'title' | 'completed'>>>,
 
   // extendsのジェネリクスが効いてる
+  // @ts-expect-error
   MyPick<Todo, 'title' | 'completed' | 'invalid'>, // invalid, compile error
   MyPick<Todo, 'title' | 'completed'>, // valid
 ]

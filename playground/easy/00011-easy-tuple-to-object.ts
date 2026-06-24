@@ -40,7 +40,8 @@ type cases = [
   Expect<Equal<TupleToObject<typeof tupleMix>, { 1: 1, '2': '2', 3: 3, '4': '4', [sym1]: typeof sym1 }>>,
 ]
 
-type error = TupleToObject<[[1, 2], {}]> // @ts-expect-error // ここでエラー出るのは正しい
+// @ts-expect-error
+type error = TupleToObject<[[1, 2], {}]> // ここでエラー出るのは正しい
 
 /* _____________ Further Steps _____________ */
 /*

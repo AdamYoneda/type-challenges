@@ -31,34 +31,34 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyPick<T, K extends keyof T> = {[key in K]: T[key]}
+type MyPick<T, K extends keyof T> = { [key in K]: T[key] };
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<Expected1, MyPick<Todo, 'title'>>>,
-  Expect<Equal<Expected2, MyPick<Todo, 'title' | 'completed'>>>,
+  Expect<Equal<Expected1, MyPick<Todo, "title">>>,
+  Expect<Equal<Expected2, MyPick<Todo, "title" | "completed">>>,
 
   // extendsのジェネリクスが効いてる
   // @ts-expect-error
-  MyPick<Todo, 'title' | 'completed' | 'invalid'>, // invalid, compile error
-  MyPick<Todo, 'title' | 'completed'>, // valid
-]
+  MyPick<Todo, "title" | "completed" | "invalid">, // invalid, compile error
+  MyPick<Todo, "title" | "completed">, // valid
+];
 
 interface Todo {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
 }
 
 interface Expected1 {
-  title: string
+  title: string;
 }
 
 interface Expected2 {
-  title: string
-  completed: boolean
+  title: string;
+  completed: boolean;
 }
 
 /* _____________ Further Steps _____________ */
@@ -67,7 +67,6 @@ interface Expected2 {
   > View solutions: https://tsch.js.org/4/solutions
   > More Challenges: https://tsch.js.org
 */
-
 
 // description from opus4.6
 // > https://github.com/type-challenges/type-challenges/issues/13427

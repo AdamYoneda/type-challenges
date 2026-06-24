@@ -31,25 +31,23 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyReadonly<T> = { readonly [P in keyof T]: T[P]}
+type MyReadonly<T> = { readonly [P in keyof T]: T[P] };
 // type MyReadonly<T> = { +readonly [P in keyof T]: T[P]} // +, - mapping modifier（明示的に付ける | 外す）
 // type MyReadonly<T> = readonly {[P in keyof T]: T[P]} // 'readonly' type modifier is only permitted on array and tuple literal types.
 // type MyReadonly<T> = {[P in keyof T]: readonly T[P]} // 'readonly' type modifier is only permitted on array and tuple literal types.
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
-type cases = [
-  Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>,
-]
+type cases = [Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>];
 
 interface Todo1 {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
   meta: {
-    author: string
-  }
+    author: string;
+  };
 }
 
 /* _____________ Further Steps _____________ */
@@ -58,7 +56,6 @@ interface Todo1 {
   > View solutions: https://tsch.js.org/7/solutions
   > More Challenges: https://tsch.js.org
 */
-
 
 // readonly operator
 // https://www.typescriptlang.org/docs/handbook/2/classes.html#readonly

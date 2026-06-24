@@ -2,9 +2,8 @@
   "name": "type-challenges",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.12.1",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "repository": "https://github.com/antfu/type-challenges.git",
   "scripts": {
     "readme": "esno ./scripts/readme.ts",
@@ -12,7 +11,9 @@
     "generate": "esno ./scripts/generate-play.ts",
     "lint": "eslint .",
     "translate": "esno ./scripts/translate-cli.ts",
-    "utils:release": "pnpm -C utils release"
+    "utils:release": "pnpm -C utils release",
+    "format": "oxfmt playground/easy/",
+    "format:check": "oxfmt --check playground/easy/"
   },
   "dependencies": {
     "esno": "^4.0.0",
@@ -34,5 +35,6 @@
     "prompts": "^2.4.2",
     "typescript": "^5.3.3",
     "utility-types": "^3.10.0"
-  }
+  },
+  "packageManager": "pnpm@8.12.1"
 }

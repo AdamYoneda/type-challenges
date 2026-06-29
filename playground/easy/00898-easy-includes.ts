@@ -19,8 +19,15 @@
 /* _____________ Your Code Here _____________ */
 
 type Includes<T extends readonly unknown[], U> =
-  Equal<T[0], U> extends true ? true : T extends [T[0], ...infer X] ? Includes<X, U> : false;
-
+  T extends [infer X, ...infer Y] ? Equal<X, U> extends true ? true : Includes<Y, U> : false;
+type a = Equal<null, undefined>
+type b<T extends readonly unknown[], U> = Equal<T[0], U>
+type c = b<[], undefined>
+type d<T extends readonly unknown[], U> = T extends [T[0], ...infer X] ? Includes<X, U> : false;
+type d2<T extends readonly unknown[], U> = T extends [T[0], ...infer X] ? X['length'] : false;
+type e = d2<[null], undefined>
+type f<T extends readonly unknown[]> = T[1]
+type f2 = f<[string]>
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
 

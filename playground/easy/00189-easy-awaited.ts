@@ -34,7 +34,7 @@ NOTE
   制約に Promise ではなく PromiseLike を使うことで、この T のようなthenable も受け入れられるようになっています。
 */
 // 再帰的に
-type MyAwaited<T extends PromiseLike<unknown>> =
+type MyAwaited<T> =
   T extends PromiseLike<infer P> ? (P extends PromiseLike<unknown> ? MyAwaited<P> : P) : never;
 
   // NOTE: PromiseLike<unknown> だとargを満たせないパターンがある（line56）

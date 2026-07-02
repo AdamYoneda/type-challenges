@@ -14,7 +14,21 @@
 
 /* _____________ Your Code Here _____________ */
 
-type IsAny<T> = any
+// type IsAny<T> = Equal<T, any>;
+
+// type IsAny<T> = unknown extends T & never ? true : false;
+
+// type a = IsAny<any>; // false
+// type b = unknown extends any ? true : false; // true unknownが弱すぎるけどanyだから
+// type c = unknown extends never ? true : false; // false 制約つよい <- ここで引っ掛かる
+// type d = any extends never ? true : false; // boolean 制約つよいはず // any vs never 1/2
+// type e = any extends unknown ? true : false; // true 制約よわい
+// type f = never extends any ? true : false; // true any // never vs any 2/2
+
+// type IsAny<T extends never> = T extends boolean ? true : false;
+
+// https://zenn.dev/kakekakemiya/articles/6ea6b327aec9ea#223%3A-isany
+type IsAny<T> = 0 extends 1 & T ? true : false;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
